@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Принцессе</title>
+
+    <style>
+        /* Общие стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Начальный экран (с кнопкой) */
+        #start-screen {
+            background: url('start-bg.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Кнопка "Посмотреть сюрприз" */
+        #surprise-btn {
+            padding: 15px 30px;
+            font-size: 22px;
+            font-weight: bold;
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            color: white;
+            border: 3px solid #ff1493;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(255, 20, 147, 0.5);
+        }
+
+        #surprise-btn:hover {
+            background: linear-gradient(to right, #ff1493, #ff69b4);
+            transform: scale(1.1);
+        }
+
+        /* Основной экран (скрыт вначале) */
+        #main-content {
+            display: none;
+            background: url('background.jpg') center/cover no-repeat;
+            padding: 50px 0;
+            color: white;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Контейнер с поздравлением */
+        .container {
+            background: rgba(255, 105, 180, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            width: 80%;
+            margin-bottom: 50px;
+        }
+
+        /* Галерея фотографий */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid #fff;
+            transform: rotate(var(--angle, 0deg));
+            transition: transform 0.3s;
+        }
+        .photo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Поздравительный текст */
+        .message {
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        /* Милый котенок внизу */
+        .cat1{
+            width: 250px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Начальный экран -->
+    <div id="start-screen">
+        <button id="surprise-btn" onclick="showSurprise()">Посмотреть сюрприз</button>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="main-content">
+        <div class="container">
+            <h2>С 8 мартом, Аякон ❤</h2>
+            <div class="photo-gallery">
+                <img src="images/photo1.jpg" class="photo">
+                <img src="images/photo2.jpg" class="photo">
+                <img src="images/photo3.jpg" class="photo">
+                <img src="images/photo4.jpg" class="photo">
+                <img src="images/photo5.jpg" class="photo">
+            </div>
+            <p class="message">
+               <br> Поздравляю с этим замечательным праздником!</br>
+                    Будь всегда так красива, милой и умной ❤ 
+               <br> Знай, что я тебя ценю и дорожу, как прекасный подарок судьбы ❤ </br>
+               <br> С праздником! </br>
+            </p>
+        </div>
+
+        <!-- Милый котенок внизу -->
+        <div class="kitten">
+            <img src="images/photo6" alt="Милый котенок">
+        </div>
+    </div>
+
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function showSurprise() {
+            document.getElementById("start-screen").style.opacity = "0";
+            setTimeout(function () {
+                document.getElementById("start-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("main-content").style.opacity = "1";
+                }, 100);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
